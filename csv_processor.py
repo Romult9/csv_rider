@@ -76,14 +76,11 @@ def main():
     
     args = parser.parse_args()
     
-    # Read data
     data = read_csv(args.file)
     
-    # Apply filter
     if args.where:
         data = apply_filter(data, args.where)
-    
-    # Apply aggregation or show data
+        
     if args.aggregate:
         result = apply_aggregation(data, args.aggregate)
         print(tabulate([result], headers='keys', tablefmt='grid'))
